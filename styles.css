@@ -101,22 +101,60 @@ html {
     }
 }
 
+/* Dev Team Card Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(249, 180, 15, 0.4);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 20px 0 rgba(249, 180, 15, 0.2);
+    }
+}
+
+@keyframes profilePulse {
+    0%, 100% {
+        border-color: #f9b40f;
+        transform: scale(1);
+    }
+    50% {
+        border-color: #ff9f43;
+        transform: scale(1.05);
+    }
+}
+
 .team-card {
-    animation: teamCardSlideUp 0.8s ease-out forwards;
+    animation: slideInUp 0.8s ease-out forwards, pulse 3s ease-in-out infinite;
     opacity: 0;
+    transition: all 0.3s ease;
 }
 
-.team-card:nth-child(1) {
-    animation-delay: 0.2s;
+.team-card:hover {
+    transform: translateY(-10px);
 }
 
-.team-card:nth-child(2) {
-    animation-delay: 0.4s;
+.team-card img {
+    animation: profilePulse 3s ease-in-out infinite;
+    transition: all 0.3s ease;
 }
 
-.team-card:nth-child(3) {
-    animation-delay: 0.6s;
-}
+/* Stagger the entrance animations */
+.team-card:nth-child(1) { animation-delay: 0.1s; }
+.team-card:nth-child(2) { animation-delay: 0.3s; }
+.team-card:nth-child(3) { animation-delay: 0.5s; }
+.team-card:nth-child(4) { animation-delay: 0.7s; }
 
 .profile-picture {
     animation: profilePicturePop 1s ease-out forwards;
